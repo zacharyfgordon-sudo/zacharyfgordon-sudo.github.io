@@ -1,8 +1,7 @@
 <!doctype html>
-<!-- Public privacy policy for Google OAuth verification. Stealth (Zac, 2026-10-30): only what
-     Google requires. Must match the app's real behaviour and the scopes on the consent screen
-     (gmail.metadata, contacts.readonly, calendar.readonly). Source of truth:
-     ../../privacy-policy.md — edit both together. -->
+<!-- Public privacy policy. Every statement here was checked against the app's code on
+     2026-11-01 (main 34411cb35, the shipped Internal build flavor); claims the code could not
+     confirm were left out. Change it whenever the app's data handling changes. -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -25,63 +24,112 @@
 <main>
   <p class="muted"><a href="/">Orbit</a></p>
   <h1>Privacy Policy</h1>
-  <p class="muted">Effective October 30, 2026 · Operated by Zac Gordon</p>
+  <p class="muted">Effective November 1, 2026 · Operated by Social Connectors</p>
 
-  <p>Orbit is a private contacts app. It keeps your data on your own devices. We do not
-  sell your data, show ads, or use your data to train AI models.</p>
+  <p>Orbit is a private contacts app. It stores your data in an encrypted database on your own
+  devices. We have no server that receives your data, and Orbit contains no advertising or
+  third-party analytics code.</p>
+
+  <h2>What Orbit reads</h2>
+  <p>Orbit reads only what you give it permission to read:</p>
+  <ul>
+    <li>Contacts, calendars and photos on your device.</li>
+    <li>On a Mac: Messages, call history, Notes, Find My, and the WhatsApp and Signal desktop
+        apps.</li>
+    <li>Files you export from other services and import into Orbit, such as Instagram,
+        LinkedIn, Facebook, Snapchat, X, TikTok, Discord, Telegram and Pinterest.</li>
+    <li>Accounts you connect: Google, iCloud Mail (message headers only), Slack, GroupMe,
+        Eventbrite and Telegram.</li>
+  </ul>
 
   <h2>Google data Orbit reads</h2>
-  <p>If you connect a Google account, Orbit asks for each Google service only when you turn
-  it on, and only reads:</p>
+  <p>When you connect a Google account, Orbit asks for read-only access to the Google services
+  you leave turned on:</p>
   <ul>
-    <li><strong>Gmail:</strong> message headers only — sender, recipients, subject and date.
-        Never message bodies or attachments.</li>
+    <li><strong>Gmail:</strong> each message’s sender, recipients, subject, date and text, up to
+        10,000 characters per message. Orbit does not download attachments, except calendar
+        invites, which it adds to your calendar in Orbit.</li>
     <li><strong>Google Contacts:</strong> names, email addresses, phone numbers and
         organisations.</li>
-    <li><strong>Google Calendar:</strong> event times, titles and attendees.</li>
+    <li><strong>Google Calendar:</strong> your events.</li>
     <li><strong>Your Google account:</strong> your email address, to show which account is
         connected.</li>
   </ul>
   <p>Orbit never sends, changes or deletes anything in your Google account.</p>
 
   <h2>How Orbit uses it</h2>
-  <p>On your device, Orbit uses this data to build and keep up to date your private contacts
-  list: who you know and when you were last in touch. Gmail headers also let Orbit notice
-  when a copy of your data that you requested from another service is ready, so Orbit can
-  remind you to import it.</p>
+  <p>Orbit uses this data to keep your private contacts list up to date, to let you search your
+  messages and email, and to answer questions you ask about the people you know.</p>
+  <p>If you turn on automatic re-import for a service, Orbit looks in Gmail for that service’s
+  data-export emails, checks that they really come from that service, downloads the export file
+  from the service’s own website, and imports it.</p>
 
-  <h2>Storage and sharing</h2>
+  <h2>Storage and sync</h2>
   <ul>
-    <li>Orbit stores your data in an encrypted database on your device, and your Google
-        sign-in in your device’s Keychain. The sign-in is used only with Google.</li>
-    <li>If you use several devices, Orbit syncs your data and your Google sign-in between
-        them, encrypted on your device first, directly or through your own private iCloud
-        storage. We have no server that receives your data.</li>
-    <li>We do not sell, rent or share Google user data, and never use it for advertising.</li>
+    <li>Orbit stores your data in an encrypted database on your device.</li>
+    <li>If you pair several devices, Orbit syncs your data between them, encrypted on your device
+        first, directly or through your own private iCloud storage. This includes your contacts,
+        message and email text, notes, your conversations with Orbit, details about your photos,
+        small face images, and the sign-ins for accounts you connect.</li>
+    <li>Orbit analyses your photos on your device and does not upload them. The photo details it
+        syncs to your other devices include when and where a photo was taken and who appears in
+        it.</li>
   </ul>
 
-  <h2>Cloud AI</h2>
-  <p>Orbit can answer questions about your contacts. When Cloud AI is on, Orbit may send
-  excerpts derived from your connected sources, including Gmail, to our AI provider to
-  answer your question; names, email addresses and phone numbers are replaced with
-  placeholders first. The provider may not use them to train models. You can turn Cloud AI
-  off in Orbit’s Settings, and then nothing is sent.</p>
-
-  <h2>Google API Services User Data Policy</h2>
-  <p>Orbit’s use and transfer of information received from Google APIs adheres to the
-  <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API
-  Services User Data Policy</a>, including the Limited Use requirements. No person reads your
-  Google data unless you ask us to for support, it is needed for security, or the law
-  requires it.</p>
+  <h2>What leaves your devices</h2>
+  <ul>
+    <li><strong>AI answers (Cloud AI, on by default).</strong> To answer a question, Orbit sends it
+        to Anthropic, the maker of Claude, with the data needed to answer it. That can include
+        names, contact details, birthdays, cities, notes, calendar events, and excerpts of your
+        messages and email. Orbit also sends voice-memo transcripts, and details of possible
+        duplicate contacts about once a day. If you turn on transcription with Claude, journal
+        page images are sent too.</li>
+    <li>Names, email addresses and phone numbers are sent as written unless you turn on Hide
+        names in Security settings. The Read my messages setting (on by default) controls whether
+        message and email text is included.</li>
+    <li>Orbit’s own connection uses Anthropic’s API. If you connect your own Claude subscription
+        (on a Mac) or your ChatGPT plan, the same information goes to Anthropic or OpenAI under
+        your account, and that account’s terms apply, including whether the provider may use it
+        to improve its models.</li>
+    <li>Turning Cloud AI off in Security settings stops all of the above.</li>
+    <li><strong>Profile details.</strong> When you choose Scrape Data for LinkedIn or Instagram,
+        Orbit sends your contacts’ profile links, which include their usernames, to Bright Data,
+        which returns their public profile details. Orbit then downloads profile pictures from the
+        addresses it returns. After you import your LinkedIn data, Orbit also checks your own
+        LinkedIn profile this way about twice a day; pausing LinkedIn in Orbit stops this.</li>
+    <li><strong>Places.</strong> To show places on a map, Orbit sends place names and coordinates
+        to Apple’s location service: your location when Find My is connected, your contacts’
+        cities, and photo locations in the photo browser. Higher security levels in Orbit stop
+        sending your location and your contacts’ cities.</li>
+    <li><strong>Messages to us.</strong> If you use Message the Developer, Orbit sends your
+        message with your app version, system version, device model, and language and region, encrypted so
+        that only we can read it.</li>
+    <li><strong>Debugging (off by default).</strong> If you turn on “Send chats &amp; data for
+        debugging”, Orbit sends us your conversations with Orbit, including the data used to
+        answer them, and from a Mac a full copy of your Orbit database about every 36 hours,
+        encrypted so that only we can read it. Orbit removes these from Apple’s servers once we
+        have collected them, or after 30 days. Turning the switch off stops sending.</li>
+    <li><strong>Updates.</strong> The Mac app checks GitHub for new versions.</li>
+    <li><strong>Accounts you connect</strong> are read with your own sign-in, directly from the
+        service.</li>
+  </ul>
 
   <h2>Retention and deletion</h2>
-  <p>Orbit keeps your data until you delete it. Disconnecting a Google account in Orbit stops
-  all reading and removes its sign-in from your devices. Deleting people in Orbit, or deleting
-  Orbit from your devices, deletes your data; we hold no copy. You can also revoke Orbit’s
-  access at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</p>
+  <p>Orbit keeps your data until you delete it; it does not expire. Voice memos are deleted once Orbit
+  has read them, or on the schedule you choose.</p>
+  <p>Disconnecting an account stops Orbit reading it and removes its sign-in from this device and
+  from your iCloud copy. Data already imported stays on your devices.</p>
+  <p>“Delete Relayed Data Now”, under Pair Your Devices, deletes Orbit’s copy in your iCloud.
+  Deleting Orbit from an iPhone removes its database from that iPhone; removing Orbit from a Mac does
+  not remove its data folder. Neither deletes the copy on your other devices or in your
+  iCloud.</p>
+  <p>Data sent to Anthropic, OpenAI or Bright Data is kept under their terms. You can revoke
+  Orbit’s access to Google at
+  <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>;
+  disconnecting in Orbit does not do this for you.</p>
 
   <h2>Contact</h2>
-  <p>Zac Gordon · <a href="mailto:socialconnectorss@gmail.com">socialconnectorss@gmail.com</a></p>
+  <p>Social Connectors · <a href="mailto:socialconnectorss@gmail.com">socialconnectorss@gmail.com</a></p>
 </main>
 </body>
 </html>
